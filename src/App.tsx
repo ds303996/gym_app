@@ -1,25 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter } from "react-router-dom";
+import { AppProvider } from "./providers/app";
+import { AppRoutes } from "./routes";
+import { AppLayout } from "./views/layout";
+import { initializeAxios } from "./lib/axios";
 
 function App() {
+  initializeAxios();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <AppProvider>
+        <AppLayout>
+          <AppRoutes/>
+        </AppLayout>
+      </AppProvider>
+    </BrowserRouter>
   );
 }
 
